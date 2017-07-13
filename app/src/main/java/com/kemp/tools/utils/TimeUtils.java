@@ -27,7 +27,8 @@ public final class TimeUtils {
         calendar.clear();//把时间清到（-28800000,1970-01-01 00:00:00）
         Logger.d("=========" + calendar.getTimeInMillis() + "," + getDateStr("yyyy-MM-dd HH:mm:ss", calendar.getTime()));
         calendar.set(Calendar.YEAR, year);
-        calendar.set(Calendar.WEEK_OF_YEAR, week);
+        calendar.set(Calendar.DAY_OF_WEEK,Calendar.SUNDAY);
+        calendar.set(Calendar.WEEK_OF_YEAR, week);//和上句代码不能颠倒
         Logger.d("=========" + calendar.getTimeInMillis() + "," + getDateStr("yyyy-MM-dd HH:mm:ss", calendar.getTime()));
         return getDateStr(dateFormat, calendar.getTime());
     }

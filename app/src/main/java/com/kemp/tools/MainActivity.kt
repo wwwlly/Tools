@@ -8,7 +8,6 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import com.kemp.tools.utils.TimeUtils
-import java.text.DateFormat
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -101,7 +100,7 @@ class MainActivity : AppCompatActivity() {
         }
         val dateStart = TimeUtils.getDateStr("yyyy-MM-dd", year, week)
         c.time = SimpleDateFormat("yyyy-MM-dd", Locale.CHINA).parse(dateStart)
-        c.roll(Calendar.DAY_OF_WEEK, 6)
+        c.add(Calendar.DAY_OF_YEAR, 6)//不能使用roll,如果使用roll，2017-12-31是周日roll 6天，结果是2017-01-06而不是2018-01-06
         val dateEnd = TimeUtils.getDateStr("yyyy-MM-dd", c.time)
         val str = "$year 年第$week 周是$dateStart 到$dateEnd"
         setShowStr2(str)
